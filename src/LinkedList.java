@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class LinkedList {
     Node head;
 
@@ -60,6 +62,68 @@ public class LinkedList {
         System.out.println(counter);
 
     }
+
+    public void insertAt (int index, int data){
+        Node node = new Node(data);
+        Node n = head;
+
+
+        if(index==0){
+            insertAtStart(data);
+        }
+
+         for (int i=0;i<index-1;i++  )
+         {
+             // find the node that point to node of the giving index by "index -1"
+             // to loop nodes you must use next pointer, therefor the next pointer must stop one before index-1
+             n = n.next; // n became index 1  now
+             System.out.println(n.value);
+         }
+        //System.out.println("Stopped at "+ n.value + ". So that "+node.next.value+" can point to "+n.next.value);
+        //System.out.println("And" + n.next.value +" can point to "+node.value );
+        node.next=n.next;
+        n.next=node;
+
+    }
+
+    public void findByIndex(int index)
+    {
+        if (index==0){
+            System.out.println(head);
+        }
+
+        int counter = 1;
+        Node n =head.next;
+
+        while (n!=null)
+        {
+            if (counter ==index)
+            {
+                System.out.println(n.value);
+                break;
+            }
+            n=n.next;
+            counter++;
+
+        }
+
+    }
+    public void printNodes(){
+        Node n = head;
+
+
+
+
+        for (int i=0;i<3-1;i++  )
+        {
+            System.out.println(n.value);
+            // finding the node that point to node before
+            n = n.next;
+
+        }
+
+    }
+
 
 
 
